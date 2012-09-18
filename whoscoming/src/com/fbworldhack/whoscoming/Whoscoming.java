@@ -2,6 +2,7 @@ package com.fbworldhack.whoscoming;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import com.facebook.android.FacebookError;
 
 public class Whoscoming extends Activity {
 
-	Facebook facebook = new Facebook("144376159040730");
+	public static Facebook facebook = new Facebook("144376159040730");
 	 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class Whoscoming extends Activity {
     
     private OnClickListener loginClicked = new OnClickListener() {
 		public void onClick(View v) {
-			facebook.authorize(Whoscoming.this, new DialogListener() {
+			facebook.authorize(Whoscoming.this, new String[] {"user_likes", "friends_likes"}, new DialogListener() {
 
 				public void onComplete(Bundle values) {
 					Intent myIntent = new Intent(Whoscoming.this, ActionSelectionActivity.class);
@@ -42,15 +43,15 @@ public class Whoscoming extends Activity {
 				}
 
 				public void onFacebookError(FacebookError e) {
-					onLoginError();
+					onLoginError(Whoscoming.this);
 				}
 
 				public void onError(DialogError e) {
-					onLoginError();
+					onLoginError(Whoscoming.this);
 				}
 
 				public void onCancel() {
-					onLoginError();
+					onLoginError(Whoscoming.this);
 				}
 	        	
 	        });
@@ -70,8 +71,8 @@ public class Whoscoming extends Activity {
         return true;
     }
     
-    private void onLoginError() {
-    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    public static void onLoginError(Context ctx) {
+    	AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
     	builder.setMessage("There has been an error. Please try again later")
     	       .setCancelable(false)
     	       .setNegativeButton("ok", new DialogInterface.OnClickListener() {
