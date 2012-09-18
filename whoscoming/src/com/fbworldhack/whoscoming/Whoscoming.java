@@ -1,13 +1,15 @@
 package com.fbworldhack.whoscoming;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
@@ -25,7 +27,8 @@ public class Whoscoming extends Activity {
         
         setContentView(R.layout.activity_whoscoming);
         
-        ImageButton loginButton = (ImageButton) findViewById(R.id.main_login);
+        ImageView loginButton = (ImageView) findViewById(R.id.main_login);
+        loginButton.setClickable(true);
         loginButton.setOnClickListener(loginClicked);
     }
     
@@ -34,19 +37,20 @@ public class Whoscoming extends Activity {
 			facebook.authorize(Whoscoming.this, new DialogListener() {
 
 				public void onComplete(Bundle values) {
-					System.out.println("onComplete");
+					Intent myIntent = new Intent(Whoscoming.this, ActionSelectionActivity.class);
+	                startActivityForResult(myIntent, 0);
 				}
 
 				public void onFacebookError(FacebookError e) {
-					System.out.println("onFacebookError");
+					onLoginError();
 				}
 
 				public void onError(DialogError e) {
-					System.out.println("dielogerror " + e);
+					onLoginError();
 				}
 
 				public void onCancel() {
-					System.out.println("onCancel");
+					onLoginError();
 				}
 	        	
 	        });
@@ -64,5 +68,18 @@ public class Whoscoming extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_whoscoming, menu);
         return true;
+    }
+    
+    private void onLoginError() {
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	builder.setMessage("There has been an error. Please try again later")
+    	       .setCancelable(false)
+    	       .setNegativeButton("ok", new DialogInterface.OnClickListener() {
+    	           public void onClick(DialogInterface dialog, int id) {
+    	                dialog.cancel();
+    	           }
+    	       });
+    	AlertDialog dialog = builder.create();
+    	dialog.show();
     }
 }
