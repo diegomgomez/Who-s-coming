@@ -25,15 +25,21 @@ public final class R {
     }
     public static final class id {
         public static final int categories=0x7f070001;
-        public static final int main_login=0x7f070004;
-        public static final int menu_settings=0x7f070005;
+        public static final int friendBackground=0x7f070006;
+        public static final int friendImage=0x7f070007;
+        public static final int friendName=0x7f070008;
+        public static final int friendgrid=0x7f070004;
+        public static final int main_login=0x7f070005;
+        public static final int menu_settings=0x7f070009;
         public static final int searchBox=0x7f070002;
         public static final int search_button=0x7f070003;
         public static final int title=0x7f070000;
     }
     public static final class layout {
         public static final int activity_actionselection=0x7f030000;
-        public static final int activity_whoscoming=0x7f030001;
+        public static final int activity_friendlist=0x7f030001;
+        public static final int activity_whoscoming=0x7f030002;
+        public static final int friend_image=0x7f030003;
     }
     public static final class menu {
         public static final int activity_whoscoming=0x7f060000;

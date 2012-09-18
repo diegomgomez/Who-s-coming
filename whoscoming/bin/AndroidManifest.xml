@@ -25,6 +25,10 @@
         <activity
             android:name=".ActionSelectionActivity"
             android:label="" />
+        
+        <activity
+            android:name=".FriendListActivity"
+            android:label="" />
     </application>
 
 </manifest>
