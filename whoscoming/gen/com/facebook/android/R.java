@@ -24,11 +24,11 @@ public final class R {
         public static final int title=0x7f02000a;
     }
     public static final class id {
-        public static final int editText1=0x7f070002;
+        public static final int categories=0x7f070001;
         public static final int main_login=0x7f070004;
         public static final int menu_settings=0x7f070005;
+        public static final int searchBox=0x7f070002;
         public static final int search_button=0x7f070003;
-        public static final int spinner1=0x7f070001;
         public static final int title=0x7f070000;
     }
     public static final class layout {

@@ -13,29 +13,32 @@
         android:src="@drawable/title" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_alignRight="@+id/editText1"
+        android:layout_alignLeft="@+id/searchBox"
+        android:layout_alignRight="@+id/searchBox"
         android:layout_centerVertical="true" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/searchBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner1"
+        android:layout_below="@+id/categories"
         android:layout_centerHorizontal="true"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="e. g. Tokyo" />
 
     <TextView
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignRight="@+id/searchBox"
+        android:layout_below="@+id/searchBox"
         android:background="@drawable/button_background"
         android:gravity="center_vertical|center"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:text="Search"
         android:textColor="#ffffff" />
 
